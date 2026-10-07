@@ -1,0 +1,60 @@
+package model;
+public abstract class Articulo {
+    private int id;
+    private String nombre;
+    private double precio;
+    private int stock;
+
+    public Articulo(int id, String nombre, double precio, int stock){
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPrecio(double precio){
+        this.precio = precio;
+    }
+
+    public void setStock(int stock){
+        this.stock = stock;
+    }
+
+    public abstract String getTipoArticulo();
+
+    public void getDetalleArticulo(){
+        System.out.println("ID: " + getId());
+        System.out.println("Nombre: " + getNombre());
+        System.out.println("Precio: " + getPrecio());
+        System.out.println("Stock: " + getStock());
+    }
+
+    @Override public String toString(){
+        return "ID: " + id + " | Nombre: " + nombre + " | Precio: " + precio + " | Stock: " + stock;
+    }
+
+}

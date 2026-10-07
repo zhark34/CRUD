@@ -15,12 +15,12 @@ public class ProductoElectronico extends Producto {
         this.garantiaMeses = garantiaMeses;
     }
 
-    @Override public String getTipoArticulo(){
+    @Override public String getTipoProducto(){
         return "Electronico";
     }
 
-    @Override public void getDetalleArticulo(){
-        super.getDetalleArticulo();
+    @Override public void getDetalleProducto(){
+        super.getDetalleProducto();
         System.out.println("Meses de garantía: " + getGarantiaMeses());
     }
 

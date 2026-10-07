@@ -15,12 +15,12 @@ public class ProductoAlimento extends Producto {
         this.diasVencimiento = diasVencimiento;
     }
 
-    @Override public String getTipoArticulo(){
+    @Override public String getTipoProducto(){
         return "Alimenticio";
     }
 
-    @Override public void getDetalleArticulo(){
-        super.getDetalleArticulo();
+    @Override public void getDetalleProducto(){
+        super.getDetalleProducto();
         System.out.println("Días hasta el vencimiento: " + getDiasVencimiento());
     }
 

@@ -26,16 +26,16 @@ public class ServiceProducto {
     public static void agregarProducto(Scanner scanner, ArrayList<Producto> productos){
         mostrarCabecera("INGRESAR ARTÍCULO");
 
-        int id = Utils.leerEntero(scanner, "Ingrese el código del artículo: ");
+        int id = Utils.leerEntero(scanner, "Ingrese el ID del producto: ");
 
         if (Utils.buscarProductoPorId(productos, id) != null) {
-            System.out.println("[ERROR] Ya existe un artículo con ese código.");
+            System.out.println("[ERROR] Ya existe un artículo con ese ID.");
             return;
         }
 
-        String nombre = Utils.leerTextoNoVacio(scanner, "Ingrese el nombre del artículo: ");
-        double precio = Utils.leerDoubleNoNegativo(scanner, "Ingrese el precio del artículo: ");
-        int stock = Utils.leerEntero(scanner, "Ingrese el stock del artículo: ");
+        String nombre = Utils.leerTextoNoVacio(scanner, "Ingrese el nombre del producto: ");
+        double precio = Utils.leerDoubleNoNegativo(scanner, "Ingrese el precio del producto: ");
+        int stock = Utils.leerEntero(scanner, "Ingrese el stock del producto: ");
 
         Producto producto = Utils.crearProducto(id, nombre, precio, stock, scanner, "Ingrese qué tipo de producto quiere agregar");
         productos.add(producto);
@@ -47,7 +47,7 @@ public class ServiceProducto {
         mostrarCabecera("LISTA DE PRODUCTOS");
 
         if(productos.isEmpty()){
-            System.out.println("[INFO] No hay artículos cargados.");
+            System.out.println("[INFO] No hay productos cargados.");
             return;
         }
 
@@ -92,7 +92,7 @@ public class ServiceProducto {
             return;
         }
 
-        String tipoProducto = producto.getTipoArticulo();
+        String tipoProducto = producto.getTipoProducto();
 
         switch (tipoProducto) {
             case "Electronico":
@@ -110,11 +110,11 @@ public class ServiceProducto {
 
                     switch (inputElectronico) {
                         case 1:
-                            String nombre = Utils.leerTextoNoVacio(scanner, "Ingrese el nuevo nombre del artículo: ");
+                            String nombre = Utils.leerTextoNoVacio(scanner, "Ingrese el nuevo nombre del producto: ");
                             electronico.setNombre(nombre);
                             break;
                         case 2:
-                            double precio = Utils.leerDoubleNoNegativo(scanner, "Ingrese el nuevo precio del artículo: ");
+                            double precio = Utils.leerDoubleNoNegativo(scanner, "Ingrese el nuevo precio del producto: ");
                             electronico.setPrecio(precio);
                             break;
                         case 3:

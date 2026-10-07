@@ -44,9 +44,9 @@ public abstract class Producto {
         this.stock = stock;
     }
 
-    public abstract String getTipoArticulo();
+    public abstract String getTipoProducto();
 
-    public void getDetalleArticulo(){
+    public void getDetalleProducto(){
         System.out.println("ID: " + getId());
         System.out.println("Nombre: " + getNombre());
         System.out.println("Precio: " + getPrecio());

@@ -37,10 +37,10 @@ public class Categoria {
 
     @Override public String toString(){
         return "Categoria {"+
-                "codigo="+codigo+
-                "nombre="+nombre+
-                "descripcion"+descripcion+
-                "}";
+                "\ncodigo="+codigo+
+                "\nnombre="+nombre+
+                "\ndescripcion="+descripcion+
+                "\n}";
     }
 
 }

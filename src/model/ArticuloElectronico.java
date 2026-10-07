@@ -2,8 +2,8 @@ package model;
 public class ArticuloElectronico extends Articulo {
     private int garantiaMeses;
 
-    public ArticuloElectronico(int codigo, String nombre, double precio, int garantiaMeses) {
-        super(codigo, nombre, precio);
+    public ArticuloElectronico(int codigo, String nombre, double precio, Categoria categoria, int garantiaMeses) {
+        super(codigo, nombre, precio, categoria);
         this.garantiaMeses = garantiaMeses;
     }
 
@@ -19,13 +19,16 @@ public class ArticuloElectronico extends Articulo {
         return "Electronico";
     }
 
-    @Override public void getDetalleEspecifico(){
-        super.getDetalleEspecifico();
-        System.out.println("Meses de garantía: " + getGarantiaMeses());
+    @Override public String getDetalleEspecifico(){
+        return "Garantía: " + garantiaMeses + " meses";
+    }
+
+    public String nroTelMesaDeAyudaParaReclamos() {
+        return "0800-123-4567";
     }
 
     @Override public String toString(){
-        return super.toString() + " | Meses de garantia: " + garantiaMeses;
+        return super.toString() + "\n [subtipo electrónico]";
     }
 
 }

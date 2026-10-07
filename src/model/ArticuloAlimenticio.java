@@ -2,8 +2,8 @@ package model;
 public class ArticuloAlimenticio extends Articulo {
     private int diasVencimiento;
 
-    public ArticuloAlimenticio(int codigo, String nombre, double precio, int diasVencimiento) {
-        super(codigo, nombre, precio);
+    public ArticuloAlimenticio(int codigo, String nombre, double precio, Categoria categoria, int diasVencimiento) {
+        super(codigo, nombre, precio, categoria);
         this.diasVencimiento = diasVencimiento;
     }
 
@@ -19,13 +19,12 @@ public class ArticuloAlimenticio extends Articulo {
         return "Alimenticio";
     }
 
-    @Override public void getDetalleEspecifico(){
-        super.getDetalleEspecifico();
-        System.out.println("Días hasta el vencimiento: " + getDiasVencimiento());
+    @Override public String getDetalleEspecifico(){
+        return "Días para vencimiento: " + diasVencimiento;
     }
 
     @Override public String toString(){
-        return super.toString() + " | Dias hasta el vencimiento: " + diasVencimiento;
+        return super.toString() + " [subtipo alimenticio]";
     }
 
 }

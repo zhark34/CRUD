@@ -3,11 +3,13 @@ public abstract class Articulo {
     private int codigo;
     private String nombre;
     private double precio;
+    private Categoria categoria;
 
-    public Articulo(int codigo, String nombre, double precio){
+    public Articulo(int codigo, String nombre, double precio, Categoria categoria){
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
+        this.categoria = categoria;
     }
 
     public int getCodigo() {
@@ -22,6 +24,10 @@ public abstract class Articulo {
         return precio;
     }
 
+    public Categoria getCategoria(){
+        return categoria;
+    }
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
@@ -34,16 +40,22 @@ public abstract class Articulo {
         this.precio = precio;
     }
 
-    public abstract String getTipoArticulo();
-
-    public void getDetalleEspecifico(){
-        System.out.println("Codigo: " + getCodigo());
-        System.out.println("Nombre: " + getNombre());
-        System.out.println("Precio: " + getPrecio());
+    public void setCategoria(Categoria categoria){
+        this.categoria = categoria;
     }
 
+    public abstract String getTipoArticulo();
+
+    public abstract String getDetalleEspecifico();
+
     @Override public String toString(){
-        return "Codigo: " + codigo + " | Nombre: " + nombre + " | Precio: " + precio;
+        return "Articulo {"+
+                "\ncodigo="+ getCodigo() +
+                "\nnombre=" + getNombre() + 
+                "\nprecio=" + getPrecio() + 
+                "\nnombre_categoria="+ categoria.getNombre() +
+                "\ntipo_articulo=" + getTipoArticulo() +
+                "\n}";
     }
 
 }

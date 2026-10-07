@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import model.Articulo;
 import model.ArticuloElectronico;
+import model.Categoria;
 import model.ArticuloAlimenticio;
 
 public class Utils {
@@ -23,6 +24,17 @@ public class Utils {
         for (Articulo articulo : articulos) {
             if (articulo.getCodigo() == codigo) {
                 return articulo;
+            }
+        }
+
+        return null;
+    }
+
+    public static Categoria buscarCategoriaPorCodigo(ArrayList<Categoria> categorias, int codigo) {
+
+        for (Categoria categoria : categorias) {
+            if (categoria.getCodigo() == codigo) {
+                return categoria;
             }
         }
 
@@ -62,7 +74,7 @@ public class Utils {
         }
     }
 
-    public static Articulo crearArticulo(int codigo, String nombre, double precio, Scanner scanner, String mensaje){
+    public static Articulo crearArticulo(int codigo, String nombre, double precio, Scanner scanner, String mensaje, Categoria categoria){
         while (true) {
             System.out.print(mensaje);
             System.out.print("\n1-Crear artículo electrónico");
@@ -73,7 +85,7 @@ public class Utils {
             switch (valor) {
                 case 1:
                     int garantiaMeses = leerEntero(scanner, "Ingrese la garantía del artículo: ");
-                    Articulo articuloElectronico = new ArticuloElectronico(codigo, nombre, precio, garantiaMeses);
+                    Articulo articuloElectronico = new ArticuloElectronico(codigo, nombre, precio, categoria, garantiaMeses);
                     if(garantiaMeses<0){
                         System.out.println("Los meses de garantia no pueden ser negativos");
                         break;
@@ -85,13 +97,42 @@ public class Utils {
                         System.out.println("Los dias de vencimiento no pueden ser negativos");
                         break;
                     }
-                    Articulo articuloAlimenticio = new ArticuloAlimenticio(codigo, nombre, precio, diasVencimiento);
+                    Articulo articuloAlimenticio = new ArticuloAlimenticio(codigo, nombre, precio, categoria, diasVencimiento);
                     return articuloAlimenticio;
                 default:
                     System.out.print("Ingrese una opcion valida");
             }
 
         }
+    }
+
+    public static Categoria elegirCategoria(Scanner scanner, ArrayList<Categoria> categorias){
+        for(Categoria categoria : categorias){
+            System.out.print("\n"+categoria.toString());
+        }
+        int opcion;
+        do{
+            System.out.print("\n0-Salir");
+            System.out.print("\nEscribe el codigo de la categoria que quieres elegir: ");
+
+            opcion = Integer.parseInt(scanner.nextLine());
+
+            if(opcion == 0){
+                return null;
+            }
+
+            Categoria categoria = buscarCategoriaPorCodigo(categorias, opcion);
+
+            if(categoria != null){
+                return categoria;
+            }
+
+            System.out.println("Categoria no encontrada.");
+
+        } while(opcion!=0);
+
+        return null;
+
     }
 
 }

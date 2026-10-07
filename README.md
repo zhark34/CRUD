@@ -21,9 +21,10 @@ La aplicación inicia desde la clase `App`, donde se muestra el menú principal 
 3. Consultar un artículo por código
 4. Modificar un artículo
 5. Eliminar un artículo
-6. Salir
+6. Listar categorías
+7. Salir
 
-Los artículos pueden ser de dos tipos:
+Las categorías disponibles se precargan al iniciar la aplicación. Los artículos pueden ser de dos tipos:
 
 - Electrónicos
 - Alimenticios
@@ -43,7 +44,7 @@ Cada tipo tiene atributos específicos:
 ## Estructura del proyecto
 
 - `src/App.java`: punto de entrada de la aplicación
-- `src/model`: modelos de datos (`Articulo`, `ArticuloElectronico`, `ArticuloAlimenticio`)
+- `src/model`: modelos de datos (`Articulo`, `Categoria`, `ArticuloElectronico`, `ArticuloAlimenticio`)
 - `src/service`: lógica de negocio para artículos
 - `src/utils/Utils.java`: métodos reutilizables para entrada y validación
 

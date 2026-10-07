@@ -1,8 +1,8 @@
-# CRUD de Productos y Pedidos
+# CRUD de Artículos y Pedidos
 
 ## Objetivo del proyecto
 
-Este proyecto tiene como finalidad gestionar un sistema básico de inventario y ventas mediante una aplicación de consola en Java. Permite registrar, listar, consultar, modificar y eliminar artículos, así como crear y listar pedidos asociados a esos productos.
+Este proyecto tiene como finalidad gestionar un sistema básico de inventario y ventas mediante una aplicación de consola en Java. Permite registrar, listar, consultar, modificar y eliminar artículos, así como crear y listar pedidos asociados a esos artículos.
 
 La aplicación está pensada para practicar conceptos de:
 
@@ -16,22 +16,22 @@ La aplicación está pensada para practicar conceptos de:
 
 La aplicación inicia desde la clase `App`, donde se muestra un menú principal con las siguientes opciones:
 
-1. Productos
+1. Artículos
 2. Pedidos
 3. Salir
 
-### Menú de productos
+### Menú de artículos
 
-Dentro de la sección de productos, se pueden realizar las siguientes acciones:
+Dentro de la sección de artículos, se pueden realizar las siguientes acciones:
 
-- Crear producto
-- Listar todos los productos
-- Consultar un producto por ID
-- Modificar un producto
-- Eliminar un producto
+- Crear artículo
+- Listar todos los artículos
+- Consultar un artículo por ID
+- Modificar un artículo
+- Eliminar un artículo
 - Volver al menú principal
 
-Los productos pueden ser de dos tipos:
+Los artículos pueden ser de dos tipos:
 
 - Electrónicos
 - Alimenticios
@@ -51,16 +51,16 @@ Dentro de la sección de pedidos, se pueden realizar las siguientes acciones:
 
 Un pedido se asocia a:
 
-- un producto existente
+- un artículo existente
 - una cantidad solicitada
 - un ID de pedido
 
-Antes de crear un pedido, la aplicación valida que el producto exista y que la cantidad solicitada no supere el stock disponible.
+Antes de crear un pedido, la aplicación valida que el artículo exista y que la cantidad solicitada no supere el stock disponible.
 
 ## Flujo general de uso
 
 1. Ejecutar la aplicación desde `App.java`.
-2. Elegir si se desea trabajar con productos o pedidos.
+2. Elegir si se desea trabajar con artículos o pedidos.
 3. Seleccionar la operación a realizar.
 4. Ingresar los datos solicitados por consola.
 5. Repetir la operación hasta salir del sistema.
@@ -68,8 +68,8 @@ Antes de crear un pedido, la aplicación valida que el producto exista y que la 
 ## Estructura del proyecto
 
 - `src/App.java`: punto de entrada de la aplicación
-- `src/model`: modelos de datos (`Producto`, `Pedido`, `ProductoElectronico`, `ProductoAlimento`)
-- `src/service`: lógica de negocio para productos y pedidos
+- `src/model`: modelos de datos (`Articulo`, `Pedido`, `ArticuloElectronico`, `ArticuloAlimenticio`)
+- `src/service`: lógica de negocio para artículos y pedidos
 - `src/utils/Utils.java`: métodos reutilizables para entrada y validación
 
 ## Ejecución

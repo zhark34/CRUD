@@ -149,7 +149,7 @@ public class ServiceArticulo {
                         break;
                 }
             } while (inputElectronico != 5);
-        }else if(articulo instanceof ArticuloElectronico){
+        }else if(articulo instanceof ArticuloAlimenticio){
             ArticuloAlimenticio alimenticeo = (ArticuloAlimenticio) articulo;
             int inputAlimenticio;
             do {

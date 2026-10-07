@@ -2,7 +2,6 @@ package utils;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.Pedido;
 import model.Articulo;
 import model.ArticuloElectronico;
 import model.ArticuloAlimenticio;
@@ -24,17 +23,6 @@ public class Utils {
         for (Articulo articulo : articulos) {
             if (articulo.getId() == id) {
                 return articulo;
-            }
-        }
-
-        return null;
-    }
-
-    public static Pedido buscarPedidoPorId(ArrayList<Pedido> pedidos, int id) {
-
-        for (Pedido pedido : pedidos) {
-            if (pedido.getId() == id) {
-                return pedido;
             }
         }
 

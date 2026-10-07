@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Pedido;
-import model.Producto;
+import model.Articulo;
 import utils.Utils;
 
 public class ServicePedido {
@@ -15,19 +15,19 @@ public class ServicePedido {
         System.out.println("========================================");
     }
 
-    public static void crearPedido(Scanner scanner, ArrayList<Producto> productos, ArrayList<Pedido> pedidos){
+    public static void crearPedido(Scanner scanner, ArrayList<Articulo> articulos, ArrayList<Pedido> pedidos){
         mostrarCabecera("CREAR PEDIDO");
 
-        if(productos.isEmpty()){
-            System.out.println("[INFO] No hay productos cargados.");
+        if(articulos.isEmpty()){
+            System.out.println("[INFO] No hay artículos cargados.");
             return;
         }
 
-        int idProducto = Utils.leerEntero(scanner, "Ingrese el ID del producto: ");
-        Producto producto = Utils.buscarProductoPorId(productos, idProducto);
+        int idArticulo = Utils.leerEntero(scanner, "Ingrese el ID del artículo: ");
+        Articulo articulo = Utils.buscarArticuloPorId(articulos, idArticulo);
 
-        if (producto == null) {
-            System.out.println("[ERROR] El producto no existe.");
+        if (articulo == null) {
+            System.out.println("[ERROR] El artículo no existe.");
             return;
         }
 
@@ -41,13 +41,13 @@ public class ServicePedido {
 
         int cantidad = Utils.leerEntero(scanner, "Ingrese la cantidad de unidades: ");
 
-        if(cantidad > producto.getStock()){
+        if(cantidad > articulo.getStock()){
             System.out.println("[ERROR] La orden supera el stock disponible.");
             return;
         }
 
-        producto.setStock(producto.getStock()-cantidad);
-        Pedido pedido = new Pedido(idPedido, cantidad, producto);
+        articulo.setStock(articulo.getStock()-cantidad);
+        Pedido pedido = new Pedido(idPedido, cantidad, articulo);
         pedidos.add(pedido);
 
         System.out.println("[OK] Pedido creado correctamente.");

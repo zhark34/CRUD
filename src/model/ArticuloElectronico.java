@@ -2,8 +2,8 @@ package model;
 public class ArticuloElectronico extends Articulo {
     private int garantiaMeses;
 
-    public ArticuloElectronico(int id, String nombre, double precio, int stock, int garantiaMeses) {
-        super(id, nombre, precio, stock);
+    public ArticuloElectronico(int codigo, String nombre, double precio, int garantiaMeses) {
+        super(codigo, nombre, precio);
         this.garantiaMeses = garantiaMeses;
     }
 

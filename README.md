@@ -18,7 +18,7 @@ La aplicación inicia desde la clase `App`, donde se muestra el menú principal 
 
 1. Crear artículo
 2. Listar todos los artículos
-3. Consultar un artículo por ID
+3. Consultar un artículo por código
 4. Modificar un artículo
 5. Eliminar un artículo
 6. Salir

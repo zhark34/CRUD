@@ -18,10 +18,10 @@ public class Utils {
         }
     }
 
-    public static Articulo buscarArticuloPorId(ArrayList<Articulo> articulos, int id) {
+    public static Articulo buscarArticuloPorCodigo(ArrayList<Articulo> articulos, int codigo) {
 
         for (Articulo articulo : articulos) {
-            if (articulo.getId() == id) {
+            if (articulo.getCodigo() == codigo) {
                 return articulo;
             }
         }
@@ -62,7 +62,7 @@ public class Utils {
         }
     }
 
-    public static Articulo crearArticulo(int id, String nombre, double precio, int stock, Scanner scanner, String mensaje){
+    public static Articulo crearArticulo(int codigo, String nombre, double precio, Scanner scanner, String mensaje){
         while (true) {
             System.out.print(mensaje);
             System.out.print("\n1-Crear artículo electrónico");
@@ -73,11 +73,19 @@ public class Utils {
             switch (valor) {
                 case 1:
                     int garantiaMeses = leerEntero(scanner, "Ingrese la garantía del artículo: ");
-                    Articulo articuloElectronico = new ArticuloElectronico(id, nombre, precio, stock, garantiaMeses);
+                    Articulo articuloElectronico = new ArticuloElectronico(codigo, nombre, precio, garantiaMeses);
+                    if(garantiaMeses<0){
+                        System.out.println("Los meses de garantia no pueden ser negativos");
+                        break;
+                    }
                     return articuloElectronico;
                 case 2:
                     int diasVencimiento = leerEntero(scanner, "Ingrese el vencimiento del artículo: ");
-                    Articulo articuloAlimenticio = new ArticuloAlimenticio(id, nombre, precio, stock, diasVencimiento);
+                    if(diasVencimiento<0){
+                        System.out.println("Los dias de vencimiento no pueden ser negativos");
+                        break;
+                    }
+                    Articulo articuloAlimenticio = new ArticuloAlimenticio(codigo, nombre, precio, diasVencimiento);
                     return articuloAlimenticio;
                 default:
                     System.out.print("Ingrese una opcion valida");

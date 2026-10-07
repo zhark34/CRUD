@@ -26,18 +26,18 @@ public class ServiceArticulo {
     public static void agregarArticulo(Scanner scanner, ArrayList<Articulo> articulos){
         mostrarCabecera("INGRESAR ARTÍCULO");
 
-        int id = Utils.leerEntero(scanner, "Ingrese el ID del artículo: ");
+        int codigo = Utils.leerEntero(scanner, "Ingrese el código del artículo: ");
 
-        if (Utils.buscarArticuloPorId(articulos, id) != null) {
-            System.out.println("[ERROR] Ya existe un artículo con ese ID.");
+        if (Utils.buscarArticuloPorCodigo(articulos, codigo) != null) {
+            System.out.println("[ERROR] Ya existe un artículo con ese código.");
             return;
         }
 
         String nombre = Utils.leerTextoNoVacio(scanner, "Ingrese el nombre del artículo: ");
         double precio = Utils.leerDoubleNoNegativo(scanner, "Ingrese el precio del artículo: ");
-        int stock = Utils.leerEntero(scanner, "Ingrese el stock del artículo: ");
 
-        Articulo articulo = Utils.crearArticulo(id, nombre, precio, stock, scanner, "Ingrese qué tipo de artículo quiere agregar");
+        Articulo articulo = Utils.crearArticulo(codigo, nombre, precio, scanner, "Ingrese qué tipo de artículo quiere agregar");
+        
         articulos.add(articulo);
 
         System.out.println("[OK] Artículo ingresado correctamente.");
@@ -64,8 +64,8 @@ public class ServiceArticulo {
             return;
         }
 
-        int id = Utils.leerEntero(scanner, "Ingrese el ID del artículo a consultar: ");
-        Articulo articulo = Utils.buscarArticuloPorId(articulos, id);
+        int codigo = Utils.leerEntero(scanner, "Ingrese el código del artículo a consultar: ");
+        Articulo articulo = Utils.buscarArticuloPorCodigo(articulos, codigo);
 
         if (articulo == null) {
             System.out.println("[ERROR] El artículo no existe.");
@@ -84,8 +84,8 @@ public class ServiceArticulo {
             return;
         }
 
-        int id = Utils.leerEntero(scanner, "Ingrese el ID del artículo a modificar: ");
-        Articulo articulo = Utils.buscarArticuloPorId(articulos, id);
+        int codigo = Utils.leerEntero(scanner, "Ingrese el código del artículo a modificar: ");
+        Articulo articulo = Utils.buscarArticuloPorCodigo(articulos, codigo);
 
         if (articulo == null) {
             System.out.println("[ERROR] El artículo no existe.");
@@ -102,9 +102,8 @@ public class ServiceArticulo {
                     mostrarOpciones("ACTUALIZAR ELECTRÓNICO",
                             "1-Nombre: " + electronico.getNombre(),
                             "2-Precio: " + electronico.getPrecio(),
-                            "3-Stock: " + electronico.getStock(),
-                            "4-Meses de garantia: " + electronico.getGarantiaMeses(),
-                            "5-Salir");
+                            "3-Meses de garantia: " + electronico.getGarantiaMeses(),
+                            "4-Salir");
 
                     inputElectronico = Utils.leerEntero(scanner, "Ingrese el campo a modificar: ");
 
@@ -118,14 +117,10 @@ public class ServiceArticulo {
                             electronico.setPrecio(precio);
                             break;
                         case 3:
-                            int stock = Utils.leerEntero(scanner, "Ingrese el nuevo stock: ");
-                            electronico.setStock(stock);
-                            break;
-                        case 4:
                             int garantiaMeses = Utils.leerEntero(scanner, "Ingrese la nueva duración de la garantía: ");
                             electronico.setGarantiaMeses(garantiaMeses);
                             break;
-                        case 5:
+                        case 4:
                             break;
                         default:
                             System.out.println("[ERROR] Opción inválida.");
@@ -140,9 +135,8 @@ public class ServiceArticulo {
                     mostrarOpciones("ACTUALIZAR ALIMENTICIO",
                             "1- " + alimenticeo.getNombre(),
                             "2- " + alimenticeo.getPrecio(),
-                            "3- " + alimenticeo.getStock(),
-                            "4- " + alimenticeo.getDiasVencimiento(),
-                            "5- Salir");
+                            "3- " + alimenticeo.getDiasVencimiento(),
+                            "4- Salir");
 
                     inputAlimenticio = Utils.leerEntero(scanner, "Ingrese el campo a modificar: ");
 
@@ -156,14 +150,10 @@ public class ServiceArticulo {
                             alimenticeo.setPrecio(precio);
                             break;
                         case 3:
-                            int stock = Utils.leerEntero(scanner, "Ingrese el nuevo stock: ");
-                            alimenticeo.setStock(stock);
-                            break;
-                        case 4:
                             int diasVencimiento = Utils.leerEntero(scanner, "Ingrese los nuevos días de vencimiento: ");
                             alimenticeo.setDiasVencimiento(diasVencimiento);
                             break;
-                        case 5:
+                        case 4:
                             break;
                         default:
                             System.out.println("[ERROR] Opción inválida.");
@@ -188,8 +178,8 @@ public class ServiceArticulo {
             return;
         }
 
-        int id = Utils.leerEntero(scanner, "Ingrese el ID del artículo a eliminar: ");
-        Articulo articulo = Utils.buscarArticuloPorId(articulos, id);
+        int codigo = Utils.leerEntero(scanner, "Ingrese el código del artículo a eliminar: ");
+        Articulo articulo = Utils.buscarArticuloPorCodigo(articulos, codigo);
 
         if (articulo == null) {
             System.out.println("[ERROR] El artículo no existe.");

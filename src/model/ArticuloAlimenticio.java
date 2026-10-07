@@ -2,8 +2,8 @@ package model;
 public class ArticuloAlimenticio extends Articulo {
     private int diasVencimiento;
 
-    public ArticuloAlimenticio(int id, String nombre, double precio, int stock, int diasVencimiento) {
-        super(id, nombre, precio, stock);
+    public ArticuloAlimenticio(int codigo, String nombre, double precio, int diasVencimiento) {
+        super(codigo, nombre, precio);
         this.diasVencimiento = diasVencimiento;
     }
 

@@ -1,19 +1,17 @@
 package model;
 public abstract class Articulo {
-    private int id;
+    private int codigo;
     private String nombre;
     private double precio;
-    private int stock;
 
-    public Articulo(int id, String nombre, double precio, int stock){
-        this.id = id;
+    public Articulo(int codigo, String nombre, double precio){
+        this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
-        this.stock = stock;
     }
 
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
     public String getNombre() {
@@ -24,12 +22,8 @@ public abstract class Articulo {
         return precio;
     }
 
-    public int getStock() {
-        return stock;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
     
     public void setNombre(String nombre) {
@@ -40,21 +34,16 @@ public abstract class Articulo {
         this.precio = precio;
     }
 
-    public void setStock(int stock){
-        this.stock = stock;
-    }
-
     public abstract String getTipoArticulo();
 
     public void getDetalleArticulo(){
-        System.out.println("ID: " + getId());
+        System.out.println("Codigo: " + getCodigo());
         System.out.println("Nombre: " + getNombre());
         System.out.println("Precio: " + getPrecio());
-        System.out.println("Stock: " + getStock());
     }
 
     @Override public String toString(){
-        return "ID: " + id + " | Nombre: " + nombre + " | Precio: " + precio + " | Stock: " + stock;
+        return "Codigo: " + codigo + " | Nombre: " + nombre + " | Precio: " + precio;
     }
 
 }

@@ -114,9 +114,7 @@ public class Utils {
         int opcion;
         do{
             System.out.print("\n0-Salir");
-            System.out.print("\nEscribe el codigo de la categoria que quieres elegir: ");
-
-            opcion = Integer.parseInt(scanner.nextLine());
+            opcion = leerEntero(scanner, "nEscribe el codigo de la categoria que quieres elegir: ");
 
             if(opcion == 0){
                 return null;

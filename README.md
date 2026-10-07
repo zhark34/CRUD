@@ -22,9 +22,9 @@ La aplicación inicia desde la clase `App`, donde se muestra el menú principal 
 4. Modificar un artículo
 5. Eliminar un artículo
 6. Listar categorías
-7. Salir
+0. Salir
 
-Las categorías disponibles se precargan al iniciar la aplicación. Los artículos pueden ser de dos tipos:
+Las categorías disponibles se precargan al iniciar la aplicación y se pueden asociar a los artículos. También pueden listarse desde el menú. Los artículos pueden ser de dos tipos:
 
 - Electrónicos
 - Alimenticios

@@ -36,7 +36,7 @@ public abstract class Articulo {
 
     public abstract String getTipoArticulo();
 
-    public void getDetalleArticulo(){
+    public void getDetalleEspecifico(){
         System.out.println("Codigo: " + getCodigo());
         System.out.println("Nombre: " + getNombre());
         System.out.println("Precio: " + getPrecio());

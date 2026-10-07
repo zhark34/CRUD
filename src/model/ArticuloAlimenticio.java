@@ -19,8 +19,8 @@ public class ArticuloAlimenticio extends Articulo {
         return "Alimenticio";
     }
 
-    @Override public void getDetalleArticulo(){
-        super.getDetalleArticulo();
+    @Override public void getDetalleEspecifico(){
+        super.getDetalleEspecifico();
         System.out.println("Días hasta el vencimiento: " + getDiasVencimiento());
     }
 

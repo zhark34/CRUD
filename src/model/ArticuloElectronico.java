@@ -19,8 +19,8 @@ public class ArticuloElectronico extends Articulo {
         return "Electronico";
     }
 
-    @Override public void getDetalleArticulo(){
-        super.getDetalleArticulo();
+    @Override public void getDetalleEspecifico(){
+        super.getDetalleEspecifico();
         System.out.println("Meses de garantía: " + getGarantiaMeses());
     }
 

@@ -107,8 +107,9 @@ public class Utils {
     }
 
     public static Categoria elegirCategoria(Scanner scanner, ArrayList<Categoria> categorias){
+        System.out.print("--- CATEGORÍAS DISPONIBLES ---");
         for(Categoria categoria : categorias){
-            System.out.print("\n"+categoria.toString());
+            System.out.print("\n"+categoria.getCodigo()+" - "+categoria.getNombre());
         }
         int opcion;
         do{

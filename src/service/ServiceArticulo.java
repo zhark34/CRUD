@@ -51,6 +51,9 @@ public class ServiceArticulo {
         articulos.add(articulo);
 
         System.out.println("[OK] Artículo ingresado correctamente.");
+
+        System.out.println(articulo.toString());
+
     }
 
     public static void listaArticulos(ArrayList<Articulo> articulos){

@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Pedido;
-import model.Producto;
-import model.ProductoElectronico;
-import model.ProductoAlimento;
+import model.Articulo;
+import model.ArticuloElectronico;
+import model.ArticuloAlimenticio;
 
 public class Utils {
     public static int leerEntero(Scanner scanner, String mensaje){
@@ -19,11 +19,11 @@ public class Utils {
         }
     }
 
-    public static Producto buscarProductoPorId(ArrayList<Producto> productos, int id) {
+    public static Articulo buscarArticuloPorId(ArrayList<Articulo> articulos, int id) {
 
-        for (Producto producto : productos) {
-            if (producto.getId() == id) {
-                return producto;
+        for (Articulo articulo : articulos) {
+            if (articulo.getId() == id) {
+                return articulo;
             }
         }
 
@@ -74,23 +74,23 @@ public class Utils {
         }
     }
 
-    public static Producto crearProducto(int id, String nombre, double precio, int stock, Scanner scanner, String mensaje){
+    public static Articulo crearArticulo(int id, String nombre, double precio, int stock, Scanner scanner, String mensaje){
         while (true) {
             System.out.print(mensaje);
-            System.out.print("\n1-Crear producto electronico");
-            System.out.print("\n2-Crear producto alimenticio");
+            System.out.print("\n1-Crear artículo electrónico");
+            System.out.print("\n2-Crear artículo alimenticio");
             System.out.print("\nIngrese una opcion: ");
             int valor = Integer.parseInt(scanner.nextLine());
 
             switch (valor) {
                 case 1:
-                    int garantiaMeses = leerEntero(scanner, "Ingrese la garantia del producto: ");
-                    Producto productoElectronico = new ProductoElectronico(id, nombre, precio, stock, garantiaMeses);
-                    return productoElectronico;
+                    int garantiaMeses = leerEntero(scanner, "Ingrese la garantía del artículo: ");
+                    Articulo articuloElectronico = new ArticuloElectronico(id, nombre, precio, stock, garantiaMeses);
+                    return articuloElectronico;
                 case 2:
-                    int diasVencimiento = leerEntero(scanner, "Ingrese el vencimiento del producto: ");
-                    Producto productoAlimento = new ProductoAlimento(id, nombre, precio, stock, diasVencimiento);
-                    return productoAlimento;
+                    int diasVencimiento = leerEntero(scanner, "Ingrese el vencimiento del artículo: ");
+                    Articulo articuloAlimenticio = new ArticuloAlimenticio(id, nombre, precio, stock, diasVencimiento);
+                    return articuloAlimenticio;
                 default:
                     System.out.print("Ingrese una opcion valida");
             }

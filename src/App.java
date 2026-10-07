@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Pedido;
-import model.Producto;
+import model.Articulo;
 import service.ServicePedido;
-import service.ServiceProducto;
+import service.ServiceArticulo;
 import utils.Utils;
 
 public class App {
-    static ArrayList<Producto> productos = new ArrayList<>();
+    static ArrayList<Articulo> articulos = new ArrayList<>();
     static ArrayList<Pedido> pedidos = new ArrayList<>();
 
     private static void mostrarMenu(String titulo, String... opciones) {
@@ -28,7 +28,7 @@ public class App {
 
         do {
             mostrarMenu("BIENVENIDO",
-                    "1. Productos",
+                    "1. Artículos",
                     "2. Pedidos",
                     "3. Salir");
             input = Utils.leerEntero(scanner, "Seleccione una opción: ");
@@ -37,30 +37,30 @@ public class App {
                 case 1:
                     int inputCrud;
                     do {
-                        mostrarMenu("CRUD DE PRODUCTOS",
-                                "1. Crear producto",
-                                "2. Listar todos los productos",
-                                "3. Consultar un producto",
-                                "4. Modificar un producto",
-                                "5. Eliminar un producto",
+                        mostrarMenu("CRUD DE ARTÍCULOS",
+                                "1. Crear artículo",
+                                "2. Listar todos los artículos",
+                                "3. Consultar un artículo",
+                                "4. Modificar un artículo",
+                                "5. Eliminar un artículo",
                                 "6. Salir");
                         inputCrud = Utils.leerEntero(scanner, "Ingrese la acción que desea realizar: ");
 
                         switch (inputCrud) {
                             case 1:
-                                ServiceProducto.agregarProducto(scanner, productos);
+                                ServiceArticulo.agregarArticulo(scanner, articulos);
                                 break;
                             case 2:
-                                ServiceProducto.listaProductos(scanner, productos);
+                                ServiceArticulo.listaArticulos(scanner, articulos);
                                 break;
                             case 3:
-                                ServiceProducto.consultarProducto(scanner, productos);
+                                ServiceArticulo.consultarArticulo(scanner, articulos);
                                 break;
                             case 4:
-                                ServiceProducto.modificarProducto(scanner, productos);
+                                ServiceArticulo.modificarArticulo(scanner, articulos);
                                 break;
                             case 5:
-                                ServiceProducto.eliminarProducto(scanner, productos);
+                                ServiceArticulo.eliminarArticulo(scanner, articulos);
                                 break;
                             case 6:
                                 break;
@@ -81,7 +81,7 @@ public class App {
 
                         switch (inputPedidos) {
                             case 1:
-                                ServicePedido.crearPedido(scanner, productos, pedidos);
+                                ServicePedido.crearPedido(scanner, articulos, pedidos);
                                 break;
                             case 2:
                                 ServicePedido.listarPedidos(scanner, pedidos);

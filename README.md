@@ -34,6 +34,14 @@ Cada tipo tiene atributos específicos:
 - Electrónico: garantía en meses
 - Alimenticio: días hasta vencimiento
 
+## Estado y limitaciones conocidas
+
+- Los artículos se almacenan en memoria y se pierden al cerrar la aplicación.
+- El detalle específico de cada subtipo está disponible en `getDetalleEspecifico()`, pero todavía no se incluye en la representación de `toString()` que muestran los listados y consultas.
+- En la modificación de artículos alimenticios, la opción de salida que muestra el menú no coincide con la condición del ciclo y el menú puede quedar activo.
+- La edición no impide asignar valores negativos a garantía o vencimiento; tampoco permite cambiar la categoría de un artículo alimenticio.
+- Algunas entradas no numéricas en los selectores de tipo o categoría durante la edición pueden interrumpir la operación con una excepción.
+
 ## Flujo general de uso
 
 1. Ejecutar la aplicación desde `App.java`.

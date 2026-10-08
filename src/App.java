@@ -89,5 +89,6 @@ public class App {
                     break;
             }
         } while (input != 0);
+        scanner.close();
     }
 }

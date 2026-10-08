@@ -79,20 +79,28 @@ public class Utils {
             System.out.print(mensaje);
             System.out.print("\n1-Crear artículo electrónico");
             System.out.print("\n2-Crear artículo alimenticio");
-            System.out.print("\nIngrese una opcion: ");
-            int valor = Integer.parseInt(scanner.nextLine());
+
+            int valor = leerEntero(scanner, "Ingrese una opcion: ");
 
             switch (valor) {
                 case 1:
-                    int garantiaMeses = leerEntero(scanner, "Ingrese la garantía del artículo: ");
+                    int garantiaMeses;
+                    do{
+                        garantiaMeses = leerEntero(scanner, "Ingrese la garantía del artículo: ");
+                        if(garantiaMeses<0){
+                            System.out.println("Los meses de garantia no pueden ser negativos");
+                        }
+                    } while (garantiaMeses < 0);
                     Articulo articuloElectronico = new ArticuloElectronico(codigo, nombre, precio, categoria, garantiaMeses);
-                    if(garantiaMeses<0){
-                        System.out.println("Los meses de garantia no pueden ser negativos");
-                        break;
-                    }
                     return articuloElectronico;
                 case 2:
-                    int diasVencimiento = leerEntero(scanner, "Ingrese el vencimiento del artículo: ");
+                    int diasVencimiento;
+                    do{
+                        diasVencimiento = leerEntero(scanner, "Ingrese el vencimiento del artículo: ");
+                        if(diasVencimiento<0){
+                            System.out.println("Los dias de vencimiento no pueden ser negativos");
+                        }
+                    } while (diasVencimiento < 0);
                     if(diasVencimiento<0){
                         System.out.println("Los dias de vencimiento no pueden ser negativos");
                         break;
@@ -114,7 +122,7 @@ public class Utils {
         int opcion;
         do{
             System.out.print("\n0-Salir");
-            opcion = leerEntero(scanner, "nEscribe el codigo de la categoria que quieres elegir: ");
+            opcion = leerEntero(scanner, "\nEscribe el codigo de la categoria que quieres elegir: ");
 
             if(opcion == 0){
                 return null;

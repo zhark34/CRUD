@@ -54,8 +54,7 @@ public abstract class Articulo {
                 "\nnombre=" + getNombre() + 
                 "\nprecio=" + getPrecio() + 
                 "\nnombre_categoria="+ categoria.getNombre() +
-                "\ntipo_articulo=" + getTipoArticulo() +
-                "\n}";
+                "\ntipo_articulo=" + getTipoArticulo();
     }
 
 }

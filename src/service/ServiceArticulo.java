@@ -139,9 +139,10 @@ public class ServiceArticulo {
                     case 4:
                         int garantiaMeses = Utils.leerEntero(scanner, "Ingrese la nueva duración de la garantía: ");
                         if(garantiaMeses < 0){
+                            System.out.println("Los meses de garantia no pueden ser negativos");
                             break;
                         }
-                        electronico.setGarantiaMeses(garantiaMeses);
+                        electronico.setGarantiaMeses(garantiaMeses); 
                         break;
                     case 5:
                         break;
@@ -175,6 +176,7 @@ public class ServiceArticulo {
                     case 3:
                         int diasVencimiento = Utils.leerEntero(scanner, "Ingrese los nuevos días de vencimiento: ");
                         if(diasVencimiento < 0){
+                            System.out.println("Los días de vencimiento no pueden ser negativos");
                             break;
                         }
                         alimenticeo.setDiasVencimiento(diasVencimiento);

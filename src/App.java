@@ -50,45 +50,52 @@ public class App {
     public static void main(String[] args) throws Exception {
         precargarCategorias(categorias);
         int input;
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = null;
+        try{
+            scanner = new Scanner(System.in);
+            do {
+                mostrarMenu("CRUD DE ARTÍCULOS",
+                        "1. Crear artículo",
+                        "2. Listar todos los artículos",
+                        "3. Consultar un artículo",
+                        "4. Modificar un artículo",
+                        "5. Eliminar un artículo",
+                        "6. Listar todas las categorias",
+                        "0. Salir");
+                input = Utils.leerEntero(scanner, "Ingrese la acción que desea realizar: ");
 
-        do {
-            mostrarMenu("CRUD DE ARTÍCULOS",
-                    "1. Crear artículo",
-                    "2. Listar todos los artículos",
-                    "3. Consultar un artículo",
-                    "4. Modificar un artículo",
-                    "5. Eliminar un artículo",
-                    "6. Listar todas las categorias",
-                    "0. Salir");
-            input = Utils.leerEntero(scanner, "Ingrese la acción que desea realizar: ");
-
-            switch (input) {
-                case 1:
-                    ServiceArticulo.agregarArticulo(scanner, articulos, categorias);
-                    break;
-                case 2:
-                    ServiceArticulo.listaArticulos(articulos);
-                    break;
-                case 3:
-                    ServiceArticulo.consultarArticulo(scanner, articulos);
-                    break;
-                case 4:
-                    ServiceArticulo.modificarArticulo(scanner, articulos, categorias);
-                    break;
-                case 5:
-                    ServiceArticulo.eliminarArticulo(scanner, articulos);
-                    break;
-                case 6:
-                    ServiceArticulo.listarCategorias(categorias);
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
-                    break;
+                switch (input) {
+                    case 1:
+                        ServiceArticulo.agregarArticulo(scanner, articulos, categorias);
+                        break;
+                    case 2:
+                        ServiceArticulo.listaArticulos(articulos);
+                        break;
+                    case 3:
+                        ServiceArticulo.consultarArticulo(scanner, articulos);
+                        break;
+                    case 4:
+                        ServiceArticulo.modificarArticulo(scanner, articulos, categorias);
+                        break;
+                    case 5:
+                        ServiceArticulo.eliminarArticulo(scanner, articulos);
+                        break;
+                    case 6:
+                        ServiceArticulo.listarCategorias(categorias);
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.out.println("Opción inválida. Intente nuevamente.");
+                        break;
+                }
+            } while (input != 0);
+        } catch(Exception e){
+            System.out.println("Ocurrió un error");
+        } finally{
+            if(scanner != null){
+                scanner.close();
             }
-        } while (input != 0);
-        scanner.close();
+        }
     }
 }

@@ -42,11 +42,11 @@ public class ServiceArticulo {
         Categoria categoria = Utils.elegirCategoria(scanner, categorias);
 
         if(categoria == null){
-            System.out.println("Operacion cancelada, volviendo al menu principal...");
+            System.out.println("[INFO] Operación cancelada, volviendo al menú principal...");
             return;
         }
 
-        Articulo articulo = Utils.crearArticulo(codigo, nombre, precio, scanner, "Ingrese qué tipo de artículo quiere agregar", categoria);
+        Articulo articulo = Utils.crearArticulo(codigo, nombre, precio, scanner, "\n[INFO] Seleccione el tipo de artículo a agregar:", categoria);
 
         articulos.add(articulo);
 
@@ -111,13 +111,13 @@ public class ServiceArticulo {
             int inputElectronico;
             do {
                 mostrarOpciones("ACTUALIZAR ELECTRÓNICO",
-                        "1-Nombre: " + electronico.getNombre(),
-                        "2-Precio: " + electronico.getPrecio(),
-                        "3-Categoria: " + electronico.getCategoria().getNombre(),
-                        "4-Meses de garantia: " + electronico.getGarantiaMeses(),
-                        "5-Salir");
+                        "1. Nombre: " + electronico.getNombre(),
+                        "2. Precio: $" + electronico.getPrecio(),
+                        "3. Categoría: " + electronico.getCategoria().getNombre(),
+                        "4. Meses de garantía: " + electronico.getGarantiaMeses(),
+                        "0. Salir");
 
-                inputElectronico = Utils.leerEntero(scanner, "Ingrese el campo a modificar: ");
+                inputElectronico = Utils.leerEntero(scanner, "\nIngrese el campo a modificar: ");
 
                 switch (inputElectronico) {
                     case 1:
@@ -131,7 +131,7 @@ public class ServiceArticulo {
                     case 3:
                         Categoria categoria = Utils.elegirCategoria(scanner, categorias);
                         if(categoria == null){
-                            System.out.println("Operacion cancelada, volviendo al menu principal...");
+                            System.out.println("[INFO] Operación cancelada, volviendo al menú principal...");
                             return;
                         }
                         electronico.setCategoria(categoria);
@@ -139,30 +139,30 @@ public class ServiceArticulo {
                     case 4:
                         int garantiaMeses = Utils.leerEntero(scanner, "Ingrese la nueva duración de la garantía: ");
                         if(garantiaMeses < 0){
-                            System.out.println("Los meses de garantia no pueden ser negativos");
+                            System.out.println("[ERROR] Los meses de garantía no pueden ser negativos.");
                             break;
                         }
                         electronico.setGarantiaMeses(garantiaMeses); 
                         break;
-                    case 5:
+                    case 0:
                         break;
                     default:
                         System.out.println("[ERROR] Opción inválida.");
                         break;
                 }
-            } while (inputElectronico != 5);
+            } while (inputElectronico != 0);
         }else if(articulo instanceof ArticuloAlimenticio){
             ArticuloAlimenticio alimenticeo = (ArticuloAlimenticio) articulo;
             int inputAlimenticio;
             do {
                 mostrarOpciones("ACTUALIZAR ALIMENTICIO",
-                        "1-Nombre: " + alimenticeo.getNombre(),
-                        "2-Precio: " + alimenticeo.getPrecio(),
-                        "3-Días de vencimiento: " + alimenticeo.getDiasVencimiento(),
-                        "4-Categoria: " + alimenticeo.getCategoria().getNombre(),
-                        "5- Salir");
+                        "1. Nombre: " + alimenticeo.getNombre(),
+                        "2. Precio: $" + alimenticeo.getPrecio(),
+                        "3. Días de vencimiento: " + alimenticeo.getDiasVencimiento(),
+                        "4. Categoría: " + alimenticeo.getCategoria().getNombre(),
+                        "0. Salir");
 
-                inputAlimenticio = Utils.leerEntero(scanner, "Ingrese el campo a modificar: ");
+                inputAlimenticio = Utils.leerEntero(scanner, "\nIngrese el campo a modificar: ");
 
                 switch (inputAlimenticio) {
                     case 1:
@@ -176,7 +176,7 @@ public class ServiceArticulo {
                     case 3:
                         int diasVencimiento = Utils.leerEntero(scanner, "Ingrese los nuevos días de vencimiento: ");
                         if(diasVencimiento < 0){
-                            System.out.println("Los días de vencimiento no pueden ser negativos");
+                            System.out.println("[ERROR] Los días de vencimiento no pueden ser negativos.");
                             break;
                         }
                         alimenticeo.setDiasVencimiento(diasVencimiento);
@@ -184,23 +184,22 @@ public class ServiceArticulo {
                     case 4:
                         Categoria categoria = Utils.elegirCategoria(scanner, categorias);
                         if(categoria == null){
-                            System.out.println("Operacion cancelada, volviendo al menu principal...");
+                            System.out.println("[INFO] Operación cancelada, volviendo al menú principal...");
                             return;
                         }
                         alimenticeo.setCategoria(categoria);
                         break;
-                    case 5:
+                    case 0:
                         break;
                     default:
                         System.out.println("[ERROR] Opción inválida.");
                         break;
                 }
 
-
-                if (inputAlimenticio == 5) {
+                if (inputAlimenticio == 0) {
                     break;
                 }
-            } while (inputAlimenticio != 5);
+            } while (inputAlimenticio != 0);
         }
     }
 

@@ -29,8 +29,8 @@ public class ArticuloElectronico extends Articulo {
 
     @Override public String toString(){
         return super.toString() + 
-        "\n Meses de garantia=" + getDetalleEspecifico() +
-        "\n}"+" [subtipo electrónico]";
+        "\n" + getDetalleEspecifico() +
+        "\n}" + " [subtipo electrónico]";
     }
 
 }

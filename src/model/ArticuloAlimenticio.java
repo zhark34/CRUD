@@ -25,8 +25,8 @@ public class ArticuloAlimenticio extends Articulo {
 
     @Override public String toString(){
         return super.toString() + 
-        "\nDías para vencimiento=" + getDetalleEspecifico()+
-        "\n}"+ " [subtipo alimenticio]";
+        "\n" + getDetalleEspecifico() +
+        "\n}" + " [subtipo alimenticio]";
     }
 
 }

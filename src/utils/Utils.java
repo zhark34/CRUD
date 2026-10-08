@@ -14,7 +14,7 @@ public class Utils {
                 System.out.print(mensaje);
                 return Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Error: debe ingresar un número entero válido.");
+                System.out.println("[ERROR] Debe ingresar un número entero válido.");
             }
         }
     }
@@ -51,7 +51,7 @@ public class Utils {
                 return texto.trim();
             }
 
-            System.out.println("Error: el texto no puede estar vacío.");
+            System.out.println("[ERROR] El texto no puede estar vacío.");
         }
     }
 
@@ -63,13 +63,13 @@ public class Utils {
                 double valor = Double.parseDouble(scanner.nextLine());
 
                 if (valor < 0) {
-                    System.out.println("Error: el precio no puede ser negativo.");
+                    System.out.println("[ERROR] El precio no puede ser negativo.");
                     continue;
                 }
 
                 return valor;
             } catch (NumberFormatException e) {
-                System.out.println("Error: debe ingresar un número decimal válido.");
+                System.out.println("[ERROR] Debe ingresar un número decimal válido.");
             }
         }
     }
@@ -77,10 +77,10 @@ public class Utils {
     public static Articulo crearArticulo(int codigo, String nombre, double precio, Scanner scanner, String mensaje, Categoria categoria){
         while (true) {
             System.out.print(mensaje);
-            System.out.print("\n1-Crear artículo electrónico");
-            System.out.print("\n2-Crear artículo alimenticio");
+            System.out.print("\n1. Crear artículo electrónico");
+            System.out.print("\n2. Crear artículo alimenticio");
 
-            int valor = leerEntero(scanner, "Ingrese una opcion: ");
+            int valor = leerEntero(scanner, "\nIngrese una opción: ");
 
             switch (valor) {
                 case 1:
@@ -88,7 +88,7 @@ public class Utils {
                     do{
                         garantiaMeses = leerEntero(scanner, "Ingrese la garantía del artículo: ");
                         if(garantiaMeses<0){
-                            System.out.println("Los meses de garantia no pueden ser negativos");
+                            System.out.println("[ERROR] Los meses de garantía no pueden ser negativos.");
                         }
                     } while (garantiaMeses < 0);
                     Articulo articuloElectronico = new ArticuloElectronico(codigo, nombre, precio, categoria, garantiaMeses);
@@ -98,31 +98,33 @@ public class Utils {
                     do{
                         diasVencimiento = leerEntero(scanner, "Ingrese el vencimiento del artículo: ");
                         if(diasVencimiento<0){
-                            System.out.println("Los dias de vencimiento no pueden ser negativos");
+                            System.out.println("[ERROR] Los días de vencimiento no pueden ser negativos.");
                         }
                     } while (diasVencimiento < 0);
                     if(diasVencimiento<0){
-                        System.out.println("Los dias de vencimiento no pueden ser negativos");
+                        System.out.println("[ERROR] Los días de vencimiento no pueden ser negativos.");
                         break;
                     }
                     Articulo articuloAlimenticio = new ArticuloAlimenticio(codigo, nombre, precio, categoria, diasVencimiento);
                     return articuloAlimenticio;
                 default:
-                    System.out.print("Ingrese una opcion valida");
+                    System.out.println("[ERROR] Opción inválida.");
             }
 
         }
     }
 
     public static Categoria elegirCategoria(Scanner scanner, ArrayList<Categoria> categorias){
-        System.out.print("--- CATEGORÍAS DISPONIBLES ---");
+        System.out.println("\n========================================");
+        System.out.println("          CATEGORÍAS DISPONIBLES");
+        System.out.println("========================================");
         for(Categoria categoria : categorias){
-            System.out.print("\n"+categoria.getCodigo()+" - "+categoria.getNombre());
+            System.out.println(categoria.getCodigo() + ". " + categoria.getNombre());
         }
         int opcion;
         do{
-            System.out.print("\n0-Salir");
-            opcion = leerEntero(scanner, "\nEscribe el codigo de la categoria que quieres elegir: ");
+            System.out.println("0. Salir");
+            opcion = leerEntero(scanner, "\nIngrese el código de la categoría que desea elegir: ");
 
             if(opcion == 0){
                 return null;
@@ -134,7 +136,7 @@ public class Utils {
                 return categoria;
             }
 
-            System.out.println("Categoria no encontrada.");
+            System.out.println("[ERROR] Categoría no encontrada.");
 
         } while(opcion!=0);
 

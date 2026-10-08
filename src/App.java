@@ -60,7 +60,7 @@ public class App {
                         "3. Consultar un artículo",
                         "4. Modificar un artículo",
                         "5. Eliminar un artículo",
-                        "6. Listar todas las categorias",
+                        "6. Listar todas las categorías",
                         "0. Salir");
                 input = Utils.leerEntero(scanner, "Ingrese la acción que desea realizar: ");
 
@@ -86,12 +86,12 @@ public class App {
                     case 0:
                         break;
                     default:
-                        System.out.println("Opción inválida. Intente nuevamente.");
+                        System.out.println("[ERROR] Opción inválida. Intente nuevamente.");
                         break;
                 }
             } while (input != 0);
         } catch(Exception e){
-            System.out.println("Ocurrió un error");
+            System.out.println("[ERROR] Ocurrió un error inesperado.");
         } finally{
             if(scanner != null){
                 scanner.close();

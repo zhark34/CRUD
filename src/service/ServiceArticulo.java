@@ -129,20 +129,18 @@ public class ServiceArticulo {
                         electronico.setPrecio(precio);
                         break;
                     case 3:
-                        for(Categoria categoria : categorias){
-                            System.out.print("\n"+categoria.toString());
-                        }
-                        
-                        System.out.print("\nEscribe el codigo de la categoria que quieres elegir: ");
-                        int opcionCategoria = Integer.parseInt(scanner.nextLine());
-                        Categoria categoria = Utils.buscarCategoriaPorCodigo(categorias, opcionCategoria);
+                        Categoria categoria = Utils.elegirCategoria(scanner, categorias);
                         if(categoria == null){
-                            break;
+                            System.out.println("Operacion cancelada, volviendo al menu principal...");
+                            return;
                         }
                         electronico.setCategoria(categoria);
                         break;
                     case 4:
                         int garantiaMeses = Utils.leerEntero(scanner, "Ingrese la nueva duración de la garantía: ");
+                        if(garantiaMeses < 0){
+                            break;
+                        }
                         electronico.setGarantiaMeses(garantiaMeses);
                         break;
                     case 5:
@@ -157,10 +155,11 @@ public class ServiceArticulo {
             int inputAlimenticio;
             do {
                 mostrarOpciones("ACTUALIZAR ALIMENTICIO",
-                        "1- " + alimenticeo.getNombre(),
-                        "2- " + alimenticeo.getPrecio(),
-                        "3- " + alimenticeo.getDiasVencimiento(),
-                        "4- Salir");
+                        "1-Nombre: " + alimenticeo.getNombre(),
+                        "2-Precio: " + alimenticeo.getPrecio(),
+                        "3-Días de vencimiento: " + alimenticeo.getDiasVencimiento(),
+                        "4-Categoria: " + alimenticeo.getCategoria().getNombre(),
+                        "5- Salir");
 
                 inputAlimenticio = Utils.leerEntero(scanner, "Ingrese el campo a modificar: ");
 
@@ -175,9 +174,20 @@ public class ServiceArticulo {
                         break;
                     case 3:
                         int diasVencimiento = Utils.leerEntero(scanner, "Ingrese los nuevos días de vencimiento: ");
+                        if(diasVencimiento < 0){
+                            break;
+                        }
                         alimenticeo.setDiasVencimiento(diasVencimiento);
                         break;
                     case 4:
+                        Categoria categoria = Utils.elegirCategoria(scanner, categorias);
+                        if(categoria == null){
+                            System.out.println("Operacion cancelada, volviendo al menu principal...");
+                            return;
+                        }
+                        alimenticeo.setCategoria(categoria);
+                        break;
+                    case 5:
                         break;
                     default:
                         System.out.println("[ERROR] Opción inválida.");
